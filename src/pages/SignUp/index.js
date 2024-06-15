@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import { Button, Container, Form, Input } from 'reactstrap';
+import { Container, Form, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import '../../styles/style.css'
 import Logo from '../../assets/image.jpg';
+import '../../styles/style.css';
 
-class SignIn extends Component {
+class SignUp extends Component {
     render() {
         return (
             <Container className="container">
-                <Form className="col-md-5 form">
+                <Form className="form col-md-5">
                     <img src={Logo} alt="LibraryZ logo" />
                     <Input type="email" placeholder="E-mail"></Input>
                     <Input type="password" placeholder="Senha"></Input>
-                    <Button>Entrar</Button>
+                    <Input type="password" placeholder="Confirme sua senha"></Input>
+                    <Button>Cadastrar</Button>
                     <hr/>
-                    <Link to="/signup">Criar conta gratuita</Link>
+                    <Link to="/">Fazer login</Link>
                 </Form>
             </Container>
         )
     }
 }
 
-export default SignIn;
+export default SignUp;
