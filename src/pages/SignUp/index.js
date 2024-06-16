@@ -21,8 +21,8 @@ class SignUp extends Component {
             this.setState({ error: "Preencha todos os dados para se cadastrar!" });
         } else {
             try {
-                await api.post('/user', { email, password }) 
-                this.reload()
+                await api.post('/user', { email, password });
+                this.reload();
             } catch (error) {
                 this.setState({ error: "Ocorreu um erro ao registrar sua conta. T.T" });
             }
