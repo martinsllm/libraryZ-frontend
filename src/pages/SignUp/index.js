@@ -38,7 +38,7 @@ class SignUp extends Component {
 
     render() {
         return (
-            <Container className="container">
+            <Container>
                 <Form className="form col-md-5" onSubmit={this.handleSignUp}>
                     <img src={Logo} alt="LibraryZ logo" />
                     {this.state.error && <p>{this.state.error}</p>}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Container, Form, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import '../../styles/style.css'
 import Logo from '../../assets/image.jpg';
 import api from '../../services/api';
 import { login } from '../../services/auth';
@@ -37,14 +36,14 @@ class SignIn extends Component {
 
     reload() {
         setTimeout(() => {
-            window.location.href = '/app'
+            window.location.href = '/home'
         }, 1000)
     }
 
     render() {
         return (
-            <Container className="container">
-                <Form className="col-md-5 form" onSubmit={this.handleSignIn}>
+            <Container>
+                <Form className="form col-md-5" onSubmit={this.handleSignIn}>
                     <img src={Logo} alt="LibraryZ logo" />
                     {this.state.error && <p>{this.state.error}</p>}
                     <Input 
@@ -57,7 +56,7 @@ class SignIn extends Component {
                         placeholder="Senha"
                         onChange={e => this.setState({ password: e.target.value })}
                     />
-                    <Button type="submit">Entrar</Button>
+                    <Button type="submit" className="bt">Entrar</Button>
                     <hr/>
                     <Link to="/signup">Criar conta gratuita</Link>
                 </Form>
