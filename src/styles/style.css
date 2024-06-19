@@ -37,6 +37,11 @@ body {
   border-radius: 10px;
 }
 
+.paginate {
+  display: flex;
+  justify-content: center;
+}
+
 p {
   color: #ff3333;
   margin-bottom: 15px;

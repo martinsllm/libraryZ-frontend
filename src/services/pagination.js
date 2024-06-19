@@ -7,15 +7,21 @@ const Paginator = ({postsPerPage, totalPosts, paginate}) => {
         pageNumbers.push(i)
     }
     return(
-        
-            <ul className="pagination" style={{position: "relative"}}>
-                {pageNumbers.map(number => (
-                    <li key={number} className="page-item">
-                        <button onClick={() => paginate(number)} className="page-link">{number}</button>
-                    </li>
-                ))}
-            </ul>
-        
+        <div class="paginate">
+            <ul className="pagination">
+                <li className="page-item">
+                    <span onClick={() => paginate(1)} className="page-link">{'<<'}</span>
+                </li>
+                    {pageNumbers.map(number => (
+                        <li key={number} className="page-item">
+                            <span onClick={() => paginate(number)} className="page-link">{number}</span>
+                        </li>
+                    ))}
+                <li className="page-item">
+                    <span onClick={() => paginate(pageNumbers.length)} className="page-link">{'>>'}</span>
+                </li>
+            </ul> 
+        </div> 
     );
 }
 

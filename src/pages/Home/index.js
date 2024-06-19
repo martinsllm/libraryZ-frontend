@@ -15,7 +15,7 @@ class Home extends Component {
     }
 
     render() {
-        const TOTAL_POSTS_PAGE = 10;
+        const TOTAL_POSTS_PAGE = 12;
         const LAST_POST_INDEX = this.state.currentPage * TOTAL_POSTS_PAGE
         const FIRST_POST_INDEX = LAST_POST_INDEX - TOTAL_POSTS_PAGE
         const CURRENT_POST_INDEX = this.state.books.slice(FIRST_POST_INDEX, LAST_POST_INDEX);
