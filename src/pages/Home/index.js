@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import Paginator from '../../services/pagination';
+import Header from '../../components/Header';
 import Logo from '../../assets/livro.jpg';
 
 class Home extends Component {
@@ -22,6 +23,7 @@ class Home extends Component {
 
         return (
             <div>
+                <Header />
                 <h3 className="my-3 text-center">Livros em estoque:</h3>
                 <div class="cards">  
                     {CURRENT_POST_INDEX.map(book => (
