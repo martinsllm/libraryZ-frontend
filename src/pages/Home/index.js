@@ -29,7 +29,7 @@ class Home extends Component {
                     {CURRENT_POST_INDEX.map(book => (
                         <figure style={{margin: '10px'}}>
                             <img src={Logo} alt="Livro" class="images" />
-                            <a href=''><figcaption>{book.name}</figcaption></a>
+                            <a href={`/book/${book.id}`}><figcaption>{book.name}</figcaption></a>
                         </figure>
                     ))}       
                 </div>

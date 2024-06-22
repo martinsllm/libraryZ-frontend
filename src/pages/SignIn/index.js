@@ -42,10 +42,10 @@ class SignIn extends Component {
 
     render() {
         return (
-            <Container>
+            <Container id="container">
                 <Form className="form col-md-5" onSubmit={this.handleSignIn}>
                     <img src={Logo} alt="LibraryZ logo" />
-                    {this.state.error && <p>{this.state.error}</p>}
+                    {this.state.error && <p className="error">{this.state.error}</p>}
                     <Input 
                         type="email" 
                         placeholder="E-mail"

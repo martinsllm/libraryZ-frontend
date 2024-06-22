@@ -55,6 +55,9 @@ export default class Header extends Component {
                 <IoMdSettings className="mb-1"/> Opções
                 </DropdownToggle>
                 <DropdownMenu>
+                  <DropdownItem>
+                    <FaShoppingCart className="mb-1"/> Minhas Compras
+                  </DropdownItem>
                   <DropdownItem onClick={this.logout}>
                     <IoMdExit className="mb-1"/> Sair
                   </DropdownItem>

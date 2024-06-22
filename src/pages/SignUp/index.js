@@ -38,10 +38,10 @@ class SignUp extends Component {
 
     render() {
         return (
-            <Container>
+            <Container id="container">
                 <Form className="form col-md-5" onSubmit={this.handleSignUp}>
                     <img src={Logo} alt="LibraryZ logo" />
-                    {this.state.error && <p>{this.state.error}</p>}
+                    {this.state.error && <p className="error">{this.state.error}</p>}
                     <Input 
                         type="email" 
                         placeholder="E-mail"
@@ -57,7 +57,7 @@ class SignUp extends Component {
                         placeholder="Confirme sua senha"
                         onChange={e => this.setState({ confPassword: e.target.value })}
                     />
-                    <Button type="submit">Cadastrar</Button>
+                    <Button type="submit" className="bt">Cadastrar</Button>
                     <hr/>
                     <Link to="/">Fazer login</Link>
                 </Form>
