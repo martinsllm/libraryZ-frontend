@@ -25,10 +25,10 @@ class Home extends Component {
             <div>
                 <Header />
                 <h3 className="my-3 text-center">Livros em estoque:</h3>
-                <div class="cards">  
+                <div className="cards">  
                     {CURRENT_POST_INDEX.map(book => (
-                        <figure style={{margin: '10px'}}>
-                            <img src={Logo} alt="Livro" class="images" />
+                        <figure style={{margin: '10px'}} key={book.id}>
+                            <img src={Logo} alt="Livro" className="images" />
                             <a href={`/book/${book.id}`}><figcaption>{book.name}</figcaption></a>
                         </figure>
                     ))}       
