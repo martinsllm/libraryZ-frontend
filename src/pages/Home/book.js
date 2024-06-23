@@ -6,13 +6,15 @@ import Header from '../../components/Header';
 import Logo from '../../assets/livro.jpg';
 import { Button, Container, Input } from 'reactstrap';
 import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
+import { jwtDecode } from 'jwt-decode';
 
 const Book = () => {
     const [data, setData] = useState([]);
     const [quantity, setQuantity] = useState(1)
     const { setCart } = useContext(DataContext);
-
+    
     const { id } = useParams();
+    const token = jwtDecode(sessionStorage.getItem('@token'));
 
     useEffect(() => {
         async function getBook() {
@@ -25,6 +27,7 @@ const Book = () => {
 
     const AddtoCart = () => {
         data.quantity = quantity || 1
+        data.user = token.id
         setCart(data)
         window.location.href = '/cart'
     }
