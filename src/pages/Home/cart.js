@@ -10,22 +10,25 @@ const Cart = () => {
     const { cart } = useContext(DataContext);
     const token = jwtDecode(sessionStorage.getItem('@token'));
 
-    console.log(cart)
+    const result = cart.filter(book => book.user === token.id)
+    console.log(result)
 
     return(
         <div>
             <Header />
-                {cart && cart.user === token.id ? (
+                {result.length > 0 ? (
                     <Container>
-                        <div>
                         <h1 className="my-3"><FaShoppingCart className="mb-1"/> Meu Carrinho</h1>
-                        <p className="mt-2">{cart.name}</p>
-                        <p>Quantidade: {cart.quantity}</p>
-                        <p>Total: R$ {cart.price * cart.quantity} </p>
-                        <Button className="btn-success"><FaCheck /> Confirmar</Button>
-                        <Button className="btn-danger"><FaTrash className="mb-1"/>Excluir</Button>
-                        <hr />
-                        </div>
+                        {result.map(book => (
+                            <div key={book.id}>
+                            <p className="mt-2">{book.name}</p>
+                            <p>Quantidade: {book.quantity}</p>
+                            <p>Total: R$ {book.price * book.quantity} </p>
+                            <Button className="btn-danger"><FaTrash className="mb-1"/> Remover</Button>
+                            <hr />
+                            </div>
+                        ))}
+                        <Button className="btn-success"><FaCheck /> Confirmar Compra</Button>
                     </Container>
                 ) : (
                     <h1 className="my-3 text-center">Seu carrinho está vazio!</h1>

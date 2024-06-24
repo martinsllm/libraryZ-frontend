@@ -11,7 +11,8 @@ import { jwtDecode } from 'jwt-decode';
 const Book = () => {
     const [data, setData] = useState([]);
     const [quantity, setQuantity] = useState(1)
-    const { setCart } = useContext(DataContext);
+    const { cart, setCart } = useContext(DataContext);
+    const [arrCart] = useState([...cart])
     
     const { id } = useParams();
     const token = jwtDecode(sessionStorage.getItem('@token'));
@@ -26,10 +27,11 @@ const Book = () => {
     });
 
     const AddtoCart = () => {
-        data.quantity = quantity || 1
-        data.user = token.id
-        setCart(data)
-        window.location.href = '/cart'
+        data.quantity = quantity || 1;
+        data.user = token.id;
+        
+        setCart([...arrCart, data]);
+        window.location.href = '/cart';
     }
         
     return (
@@ -49,7 +51,7 @@ const Book = () => {
                         min={1}
                         onChange={e => setQuantity(e.target.value)}
                     />
-                    <Button className="btn-success" onClick={AddtoCart}>Adicionar</Button>
+                    <Button className="btn-success" onClick={AddtoCart}>Adicionar ao Carrinho</Button>
                 </Container>
         </div>
     )
