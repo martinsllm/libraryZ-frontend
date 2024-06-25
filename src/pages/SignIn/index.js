@@ -16,8 +16,6 @@ class SignIn extends Component {
         e.preventDefault();
         const { email, password } = this.state;
 
-        console.log(password)
-
         if (!email || !password) {
             this.setState({ error: "Preencha e-mail e senha para continuar!" });
         } else {
