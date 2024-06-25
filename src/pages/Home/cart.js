@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { DataContext } from '../../context/Context';
-import Header from '../../components/Header';
 import { Container, Button } from 'reactstrap';
-import { FaShoppingCart, FaCheck, FaTrash } from 'react-icons/fa';
 import { jwtDecode } from 'jwt-decode';
+import { FaShoppingCart, FaCheck, FaTrash } from 'react-icons/fa';
+import { DataContext } from '../../context/Context';
+import api from '../../services/api';
+import Header from '../../components/Header';
 
 
 const Cart = () => {
@@ -17,6 +18,36 @@ const Cart = () => {
         
         setCart([...other_books, ...user_books])
     }
+
+    const getDate = () => {
+        const date = new Date();
+        const day = String(date.getDate()).padStart(2,0)
+        const month = String(date.getMonth()+1).padStart(2,0)
+        return `${day}/${month}/${date.getFullYear()}`;
+
+    }
+
+    const buyBook = async () => {
+        const total = result.reduce((a,c) => a += (c.price * c.quantity), 0);
+
+        const books = result.map((book) => ({
+            bookId: book.id,
+            quantity: book.quantity 
+        }))
+
+        const date = getDate()
+
+        const sale = { total, date, books }
+
+        try {
+            await api.post('/sale', sale)
+        } catch (error) {
+            console.log(error.response.data)
+        }
+
+    }
+ 
+    
 
     return(
         <div>
@@ -33,7 +64,7 @@ const Cart = () => {
                             <hr />
                             </div>
                         ))}
-                        <Button className="btn-success"><FaCheck /> Confirmar Compra</Button>
+                        <Button className="btn-success" onClick={() => buyBook()}><FaCheck /> Confirmar Compra</Button>
                     </Container>
                 ) : (
                     <h1 className="my-3 text-center">Seu carrinho está vazio!</h1>
