@@ -10,13 +10,13 @@ import Header from '../../components/Header';
 const Cart = () => {
     const { cart, setCart } = useContext(DataContext);
     const token = jwtDecode(sessionStorage.getItem('@token'));
-    const result = cart.filter(book => book.user === token.id);
-    const other_books = cart.filter(book => book.user !== token.id)
+    
+    const books_user = cart.filter(book => book.user === token.id);
+    const other_books = cart.filter(book => book.user !== token.id);
     
     const rmBook = (index) => {
-        const user_books = result.filter((_,i) => (i !== index));
-        
-        setCart([...other_books, ...user_books])
+        const new_books_user = books_user.filter((_,i) => (i !== index));
+        setCart([...other_books, ...new_books_user]);
     }
 
     const getDate = () => {
@@ -28,36 +28,34 @@ const Cart = () => {
     }
 
     const buyBook = async () => {
-        const total = result.reduce((a,c) => a += (c.price * c.quantity), 0);
+        const total = books_user.reduce((a,c) => a += (c.price * c.quantity), 0);
 
-        const books = result.map((book) => ({
+        const books = books_user.map((book) => ({
             bookId: book.id,
             quantity: book.quantity 
-        }))
+        }));
 
-        const date = getDate()
+        const date = getDate();
 
         const sale = { total, date, books }
 
         try {
-            await api.post('/sale', sale)
-            setCart([...other_books])
-            window.location.href='/sales'
+            await api.post('/sale', sale);
+            setCart([...other_books]);
+            window.location.href='/sales';
         } catch (error) {
             console.log(error.response.data)
         }
 
     }
- 
-    
 
     return(
         <div>
             <Header />
-                {result.length > 0 ? (
+                {books_user.length > 0 ? (
                     <Container>
                         <h1 className="my-3"><FaShoppingCart className="mb-1"/> Meu Carrinho</h1>
-                        {result.map((book, index) => (
+                        {books_user.map((book, index) => (
                             <div key={book.id}>
                             <p className="mt-2">{book.name}</p>
                             <p>Quantidade: {book.quantity}</p>
