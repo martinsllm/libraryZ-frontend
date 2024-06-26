@@ -6,13 +6,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
-import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-import { IoMdSettings, IoMdExit } from 'react-icons/io';
+  NavLink, } from 'reactstrap';
+import { FaShoppingCart } from 'react-icons/fa';
+import { IoMdExit } from 'react-icons/io';
+import { FaTicket } from "react-icons/fa6";
 import { logout } from '../services/auth';
 
 export default class Header extends Component {
@@ -45,24 +42,14 @@ export default class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/wishlist"><FaHeart className="mb-1"/> Favoritos</NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink href="/cart"><FaShoppingCart className="mb-1"/> Meu Carrinho</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                <IoMdSettings className="mb-1"/> Opções
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem href="/sales"> 
-                    <FaShoppingCart className="mb-1"/> Minhas Compras
-                  </DropdownItem>
-                  <DropdownItem onClick={this.logout}>
-                    <IoMdExit className="mb-1"/> Sair
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/sales"><FaTicket className="mb-1"/> Acompanhar Pedidos </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink onClick={this.logout}><IoMdExit className="mb-1"/> Sair </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

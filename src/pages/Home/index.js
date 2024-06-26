@@ -35,7 +35,7 @@ class Home extends Component {
                 </div>
                
                 <Paginator postsPerPage={TOTAL_POSTS_PAGE} totalPosts={this.state.books.length} paginate={(page) => this.setState({ currentPage: page })}/>
-             </div>
+            </div>
         )}
 
 }
