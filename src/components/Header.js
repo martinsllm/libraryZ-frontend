@@ -48,7 +48,7 @@ export default class Header extends Component {
                 <NavLink href="/sales"><FaTicket className="mb-1"/> Acompanhar Pedidos </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink onClick={this.logout}><IoMdExit className="mb-1"/> Sair </NavLink>
+                <NavLink onClick={this.logout} style={{cursor: "pointer"}}><IoMdExit className="mb-1"/> Sair </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

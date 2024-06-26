@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Logo from '../../assets/livro.jpg';
 import { Button, Container, Input } from 'reactstrap';
-import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
 import { jwtDecode } from 'jwt-decode';
 
 const Book = () => {
@@ -40,7 +39,6 @@ const Book = () => {
                 <Container>
                     <h1 className="my-2">{data.name}</h1>
                     <img className="images" src={Logo} alt="Livro" />
-                    <span><IoIosHeartEmpty className="mx-3"/></span>
                     <p className="lead mt-2">{data.description}</p>
                     <p className="text-muted">Autor: {data.author}</p>
                     <p className="text-muted">Preço: R$ {data.price}</p>

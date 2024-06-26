@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import Book from './pages/Home/book';
 import Cart from './pages/Home/cart';
+import Sales from './pages/Home/sales';
 import { isAuthenticated } from './services/auth';
 
 const PrivateRoute = () => {
@@ -20,6 +21,7 @@ const Router = () => (
                 <Route path='/home' element={<Home />}/>
                 <Route path='/book/:id' element={<Book />}/>
                 <Route path='/cart' element={<Cart />}/>
+                <Route path='/sales' element={<Sales />}/>
             </Route>
             <Route path='*' element={<h1>Page Not Found</h1>}/>
         </Routes>
