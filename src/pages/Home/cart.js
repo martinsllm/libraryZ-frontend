@@ -11,9 +11,9 @@ const Cart = () => {
     const { cart, setCart } = useContext(DataContext);
     const token = jwtDecode(sessionStorage.getItem('@token'));
     const result = cart.filter(book => book.user === token.id);
+    const other_books = cart.filter(book => book.user !== token.id)
     
     const rmBook = (index) => {
-        const other_books = cart.filter(book => book.user !== token.id)
         const user_books = result.filter((_,i) => (i !== index));
         
         setCart([...other_books, ...user_books])
@@ -41,6 +41,8 @@ const Cart = () => {
 
         try {
             await api.post('/sale', sale)
+            setCart([...other_books])
+            window.location.href='/sales'
         } catch (error) {
             console.log(error.response.data)
         }
