@@ -75,6 +75,10 @@ input {
     width: 100%;
 }
 
+.list ~ .list::before{
+  content: ", ";
+}
+
 hr {
   margin: 20px 0;
   border: none;

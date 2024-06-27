@@ -43,7 +43,7 @@ const Book = () => {
                     <p className="text-muted">Autor: {data.author}</p>
                     <p className="text-muted">Preço: R$ {data.price}</p>
                     <Input 
-                        placeholder="Quantidade" 
+                        defaultValue={1}
                         className="form" 
                         type="number" 
                         min={1}

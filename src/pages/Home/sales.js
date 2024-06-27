@@ -26,12 +26,12 @@ const Sales = () => {
                         <h1 className="my-3"><FaTicket className="mb-1"/> Meus Pedidos </h1>
                         {data.map((sale) => (
                             <div key={sale.id}>
-                                <p>Compra nº {sale.id}</p>
+                                <p>Código: {sale.id}</p>
                                 <p>Data: {sale.date} </p>
                                 <p>Total: R$ {sale.total} </p>
-                                <span>Book(s): </span>
+                                <span>Livros(s): </span>
                                 {sale.books.map((book) => (
-                                    <span key={book.id}>{book.name}, </span>
+                                    <span className="list" key={book.id}>{book.name}</span>
                                 ))}
                                 <hr />
                             </div>
