@@ -14,9 +14,9 @@ const SignUp = () => {
     const handleSignUp = async e => {
         e.preventDefault();
 
-        if(password !== confPassword) setError("As senhas precisam ser iguais!")
-
-        if (!email || !password || !confPassword) {
+        if(password !== confPassword) {
+            setError("As senhas precisam ser iguais!");
+        } else if (!email || !password || !confPassword) {
             setError("Preencha todos os dados para se cadastrar!");
         } else {
             try {
