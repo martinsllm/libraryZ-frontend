@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/home">LIbraryZ</NavbarBrand>
+        <NavbarBrand href="/home">LibraryZ</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
