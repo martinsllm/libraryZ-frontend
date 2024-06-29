@@ -9,12 +9,12 @@ const Sales = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        async function getBook() {
+        async function getSales() {
             const response = await api.get('/sale')
             setData(response.data);
         }
 
-        getBook();
+        getSales();
     },[]);
 
 
