@@ -9,6 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 
 const Book = () => {
     const [data, setData] = useState([]);
+    const [category, setCategory] = useState([]);
     const [quantity, setQuantity] = useState(1)
     const { cart, setCart } = useContext(DataContext);
     const [arrCart] = useState([...cart])
@@ -20,6 +21,7 @@ const Book = () => {
         async function getBook() {
             const response = await api.get(`/book/${id}`)
             setData(response.data);
+            setCategory(response.data.categories);
         }
 
         getBook();
@@ -39,9 +41,13 @@ const Book = () => {
                 <Container>
                     <h1 className="my-2">{data.name}</h1>
                     <img className="images" src={Logo} alt="Livro" />
-                    <p className="lead mt-2">{data.description}</p>
-                    <p className="text-muted">Autor: {data.author}</p>
-                    <p className="text-muted">Preço: R$ {data.price}</p>
+                    <p className="mt-2">{data.description}</p>
+                    <p>Autor: {data.author}</p>
+                    <p>Preço: R$ {data.price}</p>
+                    <span>Categoria(s): </span>
+                    {category.map((cat) => (
+                        <span className="list" key={cat.id}>{cat.name}</span>
+                    ))}
                     <Input 
                         defaultValue={1}
                         className="form" 
